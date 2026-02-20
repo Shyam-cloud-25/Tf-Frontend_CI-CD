@@ -1,0 +1,63 @@
+name: Frontend Deployment
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'index.html'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Setup (Node optional if static)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # 3️⃣ Install dependencies (if needed)
+      - name: Install dependencies
+        run: |
+          if [ -f package.json ]; then
+            npm install
+          fi
+
+      # 4️⃣ Build (if using framework)
+      - name: Build project
+        run: |
+          if [ -f package.json ]; then
+            npm run build
+          fi
+
+      # 5️⃣ Configure AWS credentials via OIDC
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::814133038071:oidc-provider/token.actions.githubusercontent.com
+          aws-region: ap-south-1
+
+      # 6️⃣ Upload static files to S3
+      - name: Upload to S3
+        run: |
+          aws s3 sync . s3://my-front-buck-01 \
+            --delete \
+            --exclude ".git/*" \
+            --exclude ".github/*"
+
+      # 7️⃣ Invalidate CloudFront Cache
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id E1PTSV76RG8KUS \
+            --paths "/*"

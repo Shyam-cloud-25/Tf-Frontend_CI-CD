@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Terraform Frontend Infrastructure Project</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1f4037, #99f2c8);
+  color: #ffffff;
+}
+
+header {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+header h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 20px;
+  opacity: 0.9;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #ffffff;
+}
+
+.tech-stack {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.tech {
+  background: rgba(0,0,0,0.3);
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  background: rgba(0,0,0,0.3);
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  background: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ffaa00;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🚀 Terraform Frontend Infrastructure</h1>
+  <p>Secure Static Website Hosting using AWS & DevOps Best Practices</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>📌 Project Overview</h2>
+    <p>
+      This project demonstrates a production-ready static frontend hosting architecture using 
+      <strong>Terraform</strong>, <strong>AWS S3</strong>, <strong>CloudFront</strong>, 
+      and <strong>GitHub OIDC CI/CD</strong>.
+    </p>
+    <p>
+      The S3 bucket is private and accessible only through CloudFront using Origin Access Control (OAC).
+      Remote state management is configured with S3 backend and DynamoDB locking.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>🏗 Architecture</h2>
+    <p>
+      User → CloudFront → Origin Access Control → Private S3 Bucket
+    </p>
+    <p>
+      Direct S3 access is blocked for security.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>🛠 Tech Stack</h2>
+    <div class="tech-stack">
+      <div class="tech">Terraform</div>
+      <div class="tech">AWS S3</div>
+      <div class="tech">CloudFront</div>
+      <div class="tech">Origin Access Control</div>
+      <div class="tech">DynamoDB State Locking</div>
+      <div class="tech">GitHub Actions</div>
+      <div class="tech">OIDC Authentication</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🔐 Security Features</h2>
+    <ul>
+      <li>Private S3 Bucket (Public Access Blocked)</li>
+      <li>CloudFront OAC Secure Access</li>
+      <li>Remote Backend with State Locking</li>
+      <li>No Hardcoded AWS Credentials (OIDC)</li>
+    </ul>
+  </div>
+
+  <div class="card" style="text-align:center;">
+    <h2>💡 DevOps Engineer: Shyam Singh Bhadauria</h2>
+    <p>Infrastructure as Code | AWS | CI/CD | Secure Cloud Architecture</p>
+    <button onclick="alert('Deployment Successful via CloudFront 🚀')">
+      Test Deployment
+    </button>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Terraform Frontend Infrastructure Project | Built with DevOps Best Practices
+</footer>
+
+</body>
+</html>
